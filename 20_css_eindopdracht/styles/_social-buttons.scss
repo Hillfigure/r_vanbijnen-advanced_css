@@ -1,0 +1,102 @@
+$instagramMagenta: #c32aa3;
+$facebookBlue: #3b5998;
+$twitterBlue: #00aced;
+$linkedinBlue: #007bb6;
+
+$smallDevicesDown: 850px;
+
+@mixin createButton () {
+    height: 45px;
+    width: 45px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.5s ease-in-out;
+    direction: ltr;
+    color: black;
+}
+
+@mixin effects($property: all, $duration: 0.2s, $timing: linear, $delay: 0s) {
+    transition-property: $property;
+    transition-duration: $duration;
+    transition-timing-function: $timing;
+    transition-delay: $delay;
+  }
+
+.social-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 40%;
+    right: 0px;
+    direction: rtl;
+
+    .fab {
+        padding-left: 5px;
+    }
+
+    .socTitle {
+        opacity: 0;
+        overflow: hidden;
+        transition: all 0.5s ease-in-out;
+        color: white;
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+    .social-btn-instagram {
+        @include createButton();
+        border-top-left-radius: 5px;
+    }
+    
+    .social-btn-facebook {
+        @include createButton()
+    }
+    
+    .social-btn-twitter {
+        @include createButton()
+    }
+    
+    .social-btn-linkedin {
+        @include createButton();
+        border-bottom-left-radius: 5px;
+    }
+}
+
+@media only screen and (min-width: $smallDevicesDown) {
+    .social-btn-instagram, .social-btn-facebook, .social-btn-twitter, .social-btn-linkedin {
+        background: black;
+        .fab {
+            color: white;
+            padding-left: 9px;
+        }
+            &:hover {
+                width: 150px;
+                transition: all 0.5s ease-in;
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+                justify-content: space-around;
+                .socTitle {
+                    opacity: 1;
+                    transition: all 1s ease-in-out;
+                    overflow: hidden;
+                } 
+            }
+    }
+    .social-btn-instagram:hover {
+        background: $instagramMagenta;
+    }
+    .social-btn-facebook:hover {
+        background: $facebookBlue;
+    }
+    .social-btn-twitter:hover {
+        background: $twitterBlue;
+    }
+    .social-btn-linkedin:hover {
+        background: $linkedinBlue;
+    }
+}
+
+
+
+

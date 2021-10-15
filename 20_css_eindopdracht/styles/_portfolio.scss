@@ -1,0 +1,98 @@
+$overlay-offset: 7px;
+
+@mixin dimensions ($position: null, $overflow: null) {
+    width: 200px;
+    height: 200px;
+    position: $position;
+    overflow: $overflow;    
+}
+
+@mixin flexCenter ($direction: null) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
+}
+
+.ssf2t {
+  grid-column: 1;
+  img {
+  width: 100%;
+  padding-top: 0px;
+  }
+}
+
+@mixin effects($property: all, $duration: 0.2s, $timing: linear, $delay: 0s) {
+  transition-property: $property;
+  transition-duration: $duration;
+  transition-timing-function: $timing;
+  transition-delay: $delay;
+}
+
+.avatar-container {
+  @include dimensions(relative, hidden);
+  img {
+    @include dimensions();
+  }
+}
+
+.overlay {  
+  @include flexCenter(column);
+  position: absolute;
+  top: $overlay-offset;
+  left: $overlay-offset;
+  width: calc(100% - 2 * #{$overlay-offset});
+  height: calc(100% - 2 * #{$overlay-offset});
+  background-color: rgba(255, 255, 255, 0.651);
+}
+
+.button {
+   position: relative;
+   width: 100px;
+   height: 50px;
+   margin-right: 10px;
+   font-size: 40px;
+   font-weight: bold;
+}
+
+.button-link {
+  @include effects;
+  @include flexCenter();
+  width: 100%;
+  height: 100%;
+  color: rgb(231, 0, 0);
+  text-decoration: none;
+}
+
+.avatar-effects {
+  
+  .overlay {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+  
+  .button {
+    top: 20px;
+    opacity: 0;
+  }
+}
+
+.avatar-effects:hover {
+ 
+  .overlay {
+    @include effects($duration: 150ms);
+    transform: scale(1);
+    opacity: 1;
+  }
+  .button {
+    @include effects();
+    top: 0;
+    opacity: 1;
+  }
+
+  img {
+    @include effects();
+    filter: grayscale(100%);
+    opacity: 0.6;
+  }
+}

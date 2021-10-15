@@ -1,0 +1,119 @@
+@import "./_testimonial";
+@import "./_portfolio";
+@import "./_social-buttons";
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+
+// Site colors
+
+$purple: #686de0;
+$background: #c3cfe2;
+$header-footer: darken($color: $background, $amount: 8);
+$menuColor: white;
+$menuColorHover: #729cdf;
+
+// Dimensions
+
+$phone: 600px;
+$ipad: 850px;
+$laptopUp: 1200px;
+
+// General layout
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: $background;
+    font-family: 'Crimson Text', serif;
+    display: grid;
+    grid-template-columns: 1fr;
+    * {
+        grid-column: 1;
+    }
+}
+
+main {
+    @include flexCenter(column);
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+section {
+    @include flexCenter(column);
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+
+header > nav, footer {
+    box-shadow: rgba(0, 0, 0, 0.23) 0px 3px 3px;
+    background: $header-footer;
+}
+
+header > nav > ul {
+    @include flexCenter();
+    list-style: none;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 1.5em;
+
+    li a {
+        text-decoration: none;
+        color: $menuColor;
+        &:hover {
+            color: $menuColorHover;
+            cursor: pointer;
+        }
+    }
+}
+
+header > nav > ul > li + li {
+    margin-left: 15px;
+}
+
+footer {
+    @include flexCenter();
+    padding: 20px;
+}
+
+h1 {
+    display:block;
+    width:100%;
+    text-align:center;
+    color: white;
+    font-size: 3em;
+}
+
+// Media Queries
+
+@media only screen and (min-width: $phone) {
+    section {
+        flex-direction: row;
+    }
+}
+
+@media only screen and (min-width: $ipad) {
+    body{
+        grid-template-columns: 1fr 800px 1fr;
+    }
+    body > * {
+        grid-column: 2;
+    }
+    main {
+        grid-column: 2;
+    }
+    header > nav {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}
+
+@media only screen and (min-width: $laptopUp) {
+    body{
+        grid-template-columns: 1fr 1000px 1fr;
+    }
+}

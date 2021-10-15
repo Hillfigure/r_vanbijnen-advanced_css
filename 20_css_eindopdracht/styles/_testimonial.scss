@@ -1,0 +1,72 @@
+// Language: English - for future developers
+
+$padding: 25px;
+$footerBackgr: #686de0;
+$white: #fff;
+
+// dimensions fixed, not relative
+// no advantage in flexibility of testimonial items
+
+@mixin dimensions ($height, $align: null) {
+    width: 280px;
+    height: $height;
+    display: flex;
+    flex-direction: column;
+    align-items: $align;
+}
+
+.testimonial-container {
+    @include dimensions(400px);
+    background-color: $white;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-top: 20px;
+    .main-container {
+        @include dimensions(250px);
+        .main-content {
+            padding: $padding;
+            font-size: 1.3em;
+        }
+    }
+    .footer-container {
+        @include dimensions(150px, center);
+        background-color: $footerBackgr;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        .footer-content {
+            padding: $padding;
+        }
+    }
+    .image-placeholder {
+        height: 0px;
+        width: 0px;
+        align-self: center;
+        img {
+            height: 90px;
+            width: 90px;
+            border: $white solid 5px;
+            border-radius: 50%;
+            position: relative;
+            bottom: 50px;
+            right: 50px;
+        }
+    }
+
+    // FONT-STYLING - maybe move to general if sitewide
+    .name {
+    font-size: 2em;
+    color: #fff;
+    font-weight: bold;
+
+    }
+    .mail {
+        color:#c3cfe2;
+        font-weight: bold;
+        font-size: 1.4em;
+    }
+    .title {
+        font-size: 1.5em;
+        color: #8dade0;
+        line-height: 1.5em;
+    }
+}
